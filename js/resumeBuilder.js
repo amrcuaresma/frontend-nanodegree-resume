@@ -11,15 +11,15 @@ var bio = {
     "welcomeMessage": "Hello World!",
     "skills": ["front end development", "HTML", "CSS", "JavaScript", "mobile development", "accessibility", "Java", "PHP"],
     "biopic": "https://media.licdn.com/media/p/6/005/08c/00f/11b651c.jpg?zoom=2&amp;resize=300%2C300",
-    "display": function (name, role, contacts, welcomeMessage, skills, biopic) {
-        var formattedName = HTMLheaderName.replace("%data%", name);
-        var formattedRole = HTMLheaderRole.replace("%data%", role);
-        var formattedMobile = HTMLmobile.replace("%data%", contacts.mobile);
-        var formattedEmail = HTMLemail.replace("%data%", contacts.email);
-        var formattedGithub = HTMLgithub.replace("%data%", contacts.github);
-        var formattedLocation = HTMLlocation.replace("%data%", contacts.location);
-        var formattedBiopic = HTMLbioPic.replace("%data%", biopic);
-        var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", welcomeMessage);
+    "display": function () {
+        var formattedName = HTMLheaderName.replace("%data%", bio.name);
+        var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+        var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+        var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+        var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+        var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+        var formattedBiopic = HTMLbioPic.replace("%data%", bio.biopic);
+        var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
         $("#header").prepend(formattedRole).prepend(formattedName);
 
@@ -28,7 +28,7 @@ var bio = {
 
         $("#header").append(formattedBiopic).append(formattedWelcomeMsg);
         $("#header").append(HTMLskillsStart);
-        $(skills).each(function(index, val) {
+        $(bio.skills).each(function(index, val) {
             var formattedSkills = HTMLskills.replace("%data%", val);
             $("#skills").append(formattedSkills);
         });
@@ -97,9 +97,9 @@ var work = {
             "description": "Developed several wireless applications for mobile devices using Java ME."
         }                
     ],
-    "display": function (jobs) {
-        if (jobs.length !== 0) {
-            $.each(jobs, function(i, object) {
+    "display": function () {
+        if (work.jobs.length !== 0) {
+            $.each(work.jobs, function(i, object) {
                 var workExperience, formattedWorkEmployer, formattedWorkTitle, formattedWorkLocation, formattedWorkDates, formattedWorkDescription;
                 $.each(object, function(property, value) {
                     switch (property) {
@@ -150,9 +150,9 @@ var projects = {
             "images": ['http://images.qualityindex.com/product_icons/257117/257117_180.jpg']
         }
     ],
-    "display": function (projects) {
-        if (projects.length !== 0) {
-            $.each(projects, function(i, object) {
+    "display": function () {
+        if (projects.projects.length !== 0) {
+            $.each(projects.projects, function(i, object) {
                 var projects, formattedProjectTitle, formattedProjectDates, formattedProjectDescription, formattedProjectImages;
                 $.each(object, function(property, value) {
                     switch (property) {
@@ -205,9 +205,9 @@ var education = {
             "url": "http://www.udacity.com"
         }
     ],
-    "display": function (schools, onlineCourses) {
-        if (schools.length !== 0) {
-            $.each(schools, function(i, object) {
+    "display": function () {
+        if (education.schools.length !== 0) {
+            $.each(education.schools, function(i, object) {
                 var education, formattedSchoolName, formattedSchoolDegree, formattedSchoolDates, formattedSchoolLocation, formattedSchoolMajor;
                 $.each(object, function(property, value) {
                     switch (property) {
@@ -234,9 +234,9 @@ var education = {
             });
         }
 
-        if (onlineCourses.length !== 0) {
+        if (education.onlineCourses.length !== 0) {
             $("#education").append(HTMLonlineClasses);
-            $.each(onlineCourses, function(i, object) {
+            $.each(education.onlineCourses, function(i, object) {
                 var onlineCourses, formattedSchoolName, formattedSchoolDegree, formattedSchoolDates, formattedSchoolLocation, formattedSchoolMajor;
                 $.each(object, function(property, value) {
                     switch (property) {
